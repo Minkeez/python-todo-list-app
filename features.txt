@@ -1,5 +1,5 @@
-this program will do
+desktop version
+  v1 - add edit delete item
 
-add view edit delete
-
-desktop - gui
+web version
+  v1 -

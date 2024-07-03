@@ -1,6 +1,7 @@
 import tkinter as tk
 import customtkinter as ctk
 from CTkListbox import *
+from CTkMessagebox import CTkMessagebox
 
 ctk.set_appearance_mode("System")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
@@ -14,7 +15,12 @@ FONT = ctk.CTkFont(
 )
 
 def add_item():
-  pass
+  if item_input.get() != "":
+    item = item_input.get()
+    todo_list_box.insert(ctk.END, item)
+    item_input.delete(0, ctk.END)
+  else:
+    CTkMessagebox(title="Info", message="Please input some task first")
 
 def edit_item():
   pass
@@ -50,7 +56,7 @@ add_button = ctk.CTkButton(
   main_frame,
   text="Add", 
   text_color="#FFF", 
-  font=("Arial", 16), 
+  font=(FONT, 16), 
   width=173/2, 
   height=53/2,
   fg_color="#338647",
@@ -59,12 +65,14 @@ add_button = ctk.CTkButton(
 )
 add_button.grid(row=1, column=3, padx=20, pady=10, sticky='e')
 
-# todo_list_box = CTkListbox(
-#   root,
-#   width=350,
-#   height=250,
-#   fg_color="#e7e7e7"
-# )
-# todo_list_box.pack(pady=10)
+todo_list_box = CTkListbox(
+  root,
+  width=350,
+  height=270,
+  text_color="#FFF",
+  hover_color="#3e3e3e",
+  highlight_color="#333",
+)
+todo_list_box.pack(padx=20, pady=10)
 
 root.mainloop()
